@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_margin="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHeader"
+            android:text="Талия"
+            android:textSize="@dimen/size_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/btnRemove"
+                android:text="Remove"
+                android:textAllCaps="false"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/btnAdd"
+                android:text="Add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <include layout="@layout/item_divider" />
+
+
+        <com.nex3z.flowlayout.FlowLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:id="@+id/flow_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:childSpacing="8dp"
+            app:flow="true"
+            app:rtl="true"
+            app:childSpacingForLastRow="align">
+
+        </com.nex3z.flowlayout.FlowLayout>
+
+        <include android:id="@+id/chartView" layout="@layout/chart"/>
+<!--        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <view
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                class="im.dacer.androidcharts.LineView"
+                android:id="@+id/line_view"/>
+        </HorizontalScrollView>-->
+
+    </LinearLayout>
+
+</LinearLayout>

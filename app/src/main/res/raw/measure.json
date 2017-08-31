@@ -1,0 +1,1066 @@
+[
+  {
+    "cdate": "19.05.2017 00:00:00",
+    "sizes": {
+      "leftforearm": "0",
+      "rightcalf": "0",
+      "leftcalf": "0",
+      "rightforearm": "0",
+      "leftshoulder": "31.9",
+      "wrist": "0",
+      "rightshoulder": "33.8",
+      "lefthip": "51.8",
+      "breast": "0",
+      "waist": "96.3",
+      "stomach": "0",
+      "substomach": "0",
+      "hips": "104.4",
+      "bust": "103.5",
+      "righthip": "52.7",
+      "shoulder": "0",
+      "height": "175",
+      "neck": "42.98"
+    },
+    "weight": "77",
+    "age": 36,
+    "gender": "male",
+    "summary": {
+      "weightKG": {
+        "val": 77,
+        "min": 63.8,
+        "max": 86.3,
+        "padding": 52.836,
+        "name": "Вес",
+        "unit": "кг"
+      },
+      "smKG": {
+        "val": 58.6,
+        "min": 61.6,
+        "max": 69.3,
+        "padding": 31.678246753247,
+        "name": "Сухая масса",
+        "unit": "кг"
+      },
+      "sjKG": {
+        "val": 18.4,
+        "min": 7.7,
+        "max": 15.4,
+        "padding": 73.087012987013,
+        "name": "Содержание жира",
+        "unit": "кг"
+      },
+      "smPe": {
+        "val": 76.1,
+        "min": 80,
+        "max": 90,
+        "padding": 31.676625,
+        "name": "Сухая масса",
+        "unit": "%"
+      },
+      "sjPe": {
+        "val": 23.9,
+        "min": 10,
+        "max": 20,
+        "padding": 73.0935,
+        "percjHeriBMI": 21.3,
+        "percjYMCA": 26.5,
+        "name": "Содержание жира",
+        "unit": "%"
+      },
+      "bmi": {
+        "val": 25.1,
+        "min": 18.5,
+        "max": 25,
+        "padding": 66.7332,
+        "text": "Избыточная масса тела (предожирение)",
+        "name": "ИМТ",
+        "unit": ""
+      },
+      "weight": {
+        "curr": 77,
+        "opt": 75.5,
+        "dd": -1.5
+      },
+      "bju": {
+        "b": 84.7,
+        "j": 38.5,
+        "u": 385,
+        "k": 2225.3
+      },
+      "tkr": {
+        "val": 55,
+        "min": 43,
+        "max": 53,
+        "padding": 67.856603773585,
+        "name": "Соотношение талии к росту",
+        "unit": ""
+      },
+      "danger": {
+        "text1": "Риск есть!",
+        "text2": "большой обхват талии",
+        "img": 3
+      }
+    },
+    "mix": [
+      {
+        "0": {
+          "list": [
+            {
+              "name": "Рост",
+              "unit": "см",
+              "path": "height",
+              "value": "175"
+            },
+            {
+              "name": "Обхват шеи",
+              "unit": "см",
+              "path": "neck",
+              "value": "42.98"
+            }
+          ]
+        },
+        "1": {
+          "list": [
+            {
+              "name": "Объем плеч",
+              "unit": "см",
+              "path": "shoulder",
+              "value": "0"
+            }
+          ]
+        },
+        "2": {
+          "list": [
+            {
+              "name": "Обхват груди",
+              "unit": "см",
+              "path": "bust",
+              "value": "103.5"
+            },
+            {
+              "name": "Обхват под грудью",
+              "unit": "см",
+              "path": "breast",
+              "value": "0"
+            },
+            {
+              "name": "Обхват талии",
+              "unit": "см",
+              "path": "waist",
+              "value": "96.3"
+            },
+            {
+              "name": "Обхват живота",
+              "unit": "пупок, см",
+              "path": "stomach",
+              "value": "0"
+            },
+            {
+              "name": "Обхват под животом",
+              "unit": "ниже пупка, см",
+              "path": "substomach",
+              "value": "0"
+            }
+          ]
+        },
+        "4": {
+          "list": [
+            {
+              "name": "Обхват запястья",
+              "unit": "см",
+              "path": "wrist",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      [
+        {
+          "list": [
+            {
+              "name": "Плечо правое",
+              "unit": "середина, см",
+              "path": "rightshoulder",
+              "value": "33.8"
+            },
+            {
+              "name": "Предплечье правое",
+              "unit": "середина, см",
+              "path": "rightforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Плечо левое",
+              "unit": "середина, см",
+              "path": "leftshoulder",
+              "value": "31.9"
+            },
+            {
+              "name": "Предплечье левое",
+              "unit": "середина, см",
+              "path": "leftforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "По центру ягодиц",
+              "unit": "см",
+              "path": "hips",
+              "value": "104.4"
+            },
+            {
+              "name": "Правое бедро",
+              "unit": "под ягодицами",
+              "path": "righthip",
+              "value": "52.7"
+            },
+            {
+              "name": "Левое бедро",
+              "unit": "под ягодицами",
+              "path": "lefthip",
+              "value": "51.8"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Икра правая",
+              "unit": "середина, см",
+              "path": "rightcalf",
+              "value": "0"
+            },
+            {
+              "name": "Икра левая",
+              "unit": "середина, см",
+              "path": "leftcalf",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    ],
+    "usermessage": null,
+    "managermessage": null,
+    "models": [
+      {
+        "id": "441",
+        "iuser": "1",
+        "path": "http://app.dubllik.com/u/files/iusers/c4ca4238a0b923820dcc509a6f75849b/model_20170321_16-37-22.stl",
+        "name": "model_20170321_16-37-22.stl",
+        "cdate": "21.03.2017 16:37:54",
+        "defmodel": "0",
+        "scanner": "000001",
+        "accuracy": "",
+        "weight": "",
+        "height": "",
+        "orderprint": ""
+      }
+    ]
+  },
+  {
+    "cdate": "24.07.2017 00:00:00",
+    "sizes": {
+      "bust": "105.9",
+      "shoulder": "0",
+      "neck": "42.98",
+      "height": "175",
+      "breast": "0",
+      "waist": "97.8",
+      "stomach": "0",
+      "substomach": "0",
+      "hips": "101.9",
+      "righthip": "51.8",
+      "lefthip": "51.4",
+      "wrist": "0",
+      "rightshoulder": "35.4",
+      "rightforearm": "0",
+      "leftshoulder": "34.7",
+      "leftforearm": "0",
+      "rightcalf": "0",
+      "leftcalf": "0"
+    },
+    "weight": "79",
+    "age": 36,
+    "gender": "male",
+    "summary": {
+      "weightKG": {
+        "val": 79,
+        "min": 63.8,
+        "max": 86.3,
+        "padding": 55.796,
+        "name": "Вес",
+        "unit": "кг"
+      },
+      "smKG": {
+        "val": 59.5,
+        "min": 63.2,
+        "max": 71.1,
+        "padding": 31.350474683544,
+        "name": "Сухая масса",
+        "unit": "кг"
+      },
+      "sjKG": {
+        "val": 19.5,
+        "min": 7.9,
+        "max": 15.8,
+        "padding": 74.398101265823,
+        "name": "Содержание жира",
+        "unit": "кг"
+      },
+      "smPe": {
+        "val": 75.3,
+        "min": 80,
+        "max": 90,
+        "padding": 31.343625,
+        "name": "Сухая масса",
+        "unit": "%"
+      },
+      "sjPe": {
+        "val": 24.7,
+        "min": 10,
+        "max": 20,
+        "padding": 74.4255,
+        "percjHeriBMI": 22.3,
+        "percjYMCA": 27,
+        "name": "Содержание жира",
+        "unit": "%"
+      },
+      "bmi": {
+        "val": 25.8,
+        "min": 18.5,
+        "max": 25,
+        "padding": 67.6656,
+        "text": "Избыточная масса тела (предожирение)",
+        "name": "ИМТ",
+        "unit": ""
+      },
+      "weight": {
+        "curr": 79,
+        "opt": 77.2,
+        "dd": -1.8
+      },
+      "bju": {
+        "b": 86.9,
+        "j": 39.5,
+        "u": 395,
+        "k": 2283.1
+      },
+      "tkr": {
+        "val": 55.9,
+        "min": 43,
+        "max": 53,
+        "padding": 68.422075471698,
+        "name": "Соотношение талии к росту",
+        "unit": ""
+      },
+      "danger": {
+        "text1": "Риск есть!",
+        "text2": "большой обхват талии",
+        "img": 3
+      }
+    },
+    "mix": [
+      {
+        "0": {
+          "list": [
+            {
+              "name": "Рост",
+              "unit": "см",
+              "path": "height",
+              "value": "175"
+            },
+            {
+              "name": "Обхват шеи",
+              "unit": "см",
+              "path": "neck",
+              "value": "42.98"
+            }
+          ]
+        },
+        "1": {
+          "list": [
+            {
+              "name": "Объем плеч",
+              "unit": "см",
+              "path": "shoulder",
+              "value": "0"
+            }
+          ]
+        },
+        "2": {
+          "list": [
+            {
+              "name": "Обхват груди",
+              "unit": "см",
+              "path": "bust",
+              "value": "105.9"
+            },
+            {
+              "name": "Обхват под грудью",
+              "unit": "см",
+              "path": "breast",
+              "value": "0"
+            },
+            {
+              "name": "Обхват талии",
+              "unit": "см",
+              "path": "waist",
+              "value": "97.8"
+            },
+            {
+              "name": "Обхват живота",
+              "unit": "пупок, см",
+              "path": "stomach",
+              "value": "0"
+            },
+            {
+              "name": "Обхват под животом",
+              "unit": "ниже пупка, см",
+              "path": "substomach",
+              "value": "0"
+            }
+          ]
+        },
+        "4": {
+          "list": [
+            {
+              "name": "Обхват запястья",
+              "unit": "см",
+              "path": "wrist",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      [
+        {
+          "list": [
+            {
+              "name": "Плечо правое",
+              "unit": "середина, см",
+              "path": "rightshoulder",
+              "value": "35.4"
+            },
+            {
+              "name": "Предплечье правое",
+              "unit": "середина, см",
+              "path": "rightforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Плечо левое",
+              "unit": "середина, см",
+              "path": "leftshoulder",
+              "value": "34.7"
+            },
+            {
+              "name": "Предплечье левое",
+              "unit": "середина, см",
+              "path": "leftforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "По центру ягодиц",
+              "unit": "см",
+              "path": "hips",
+              "value": "101.9"
+            },
+            {
+              "name": "Правое бедро",
+              "unit": "под ягодицами",
+              "path": "righthip",
+              "value": "51.8"
+            },
+            {
+              "name": "Левое бедро",
+              "unit": "под ягодицами",
+              "path": "lefthip",
+              "value": "51.4"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Икра правая",
+              "unit": "середина, см",
+              "path": "rightcalf",
+              "value": "0"
+            },
+            {
+              "name": "Икра левая",
+              "unit": "середина, см",
+              "path": "leftcalf",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    ],
+    "usermessage": null,
+    "managermessage": null,
+    "models": [
+      {
+        "id": "570",
+        "iuser": "1",
+        "path": "http://app.dubllik.com/u/files/iusers/c4ca4238a0b923820dcc509a6f75849b/model_20170724_15-48-43",
+        "name": "model_20170724_15-48-43.ply",
+        "cdate": "24.07.2017 15:49:27",
+        "defmodel": "0",
+        "scanner": "000001",
+        "accuracy": "",
+        "weight": "79",
+        "height": "175",
+        "orderprint": ""
+      }
+    ]
+  },
+  {
+    "cdate": "25.07.2017 00:00:00",
+    "sizes": {
+      "rightcalf": "0",
+      "leftcalf": "0",
+      "lefthip": "51.4",
+      "wrist": "0",
+      "rightshoulder": "35.4",
+      "rightforearm": "0",
+      "leftshoulder": "34.7",
+      "leftforearm": "0",
+      "righthip": "51.8",
+      "stomach": "0",
+      "substomach": "0",
+      "hips": "101.9",
+      "height": "175",
+      "neck": "42.98",
+      "shoulder": "0",
+      "bust": "105.9",
+      "breast": "0",
+      "waist": "97.8"
+    },
+    "weight": "78",
+    "age": 36,
+    "gender": "male",
+    "summary": {
+      "weightKG": {
+        "val": 78,
+        "min": 63.8,
+        "max": 86.3,
+        "padding": 54.316,
+        "name": "Вес",
+        "unit": "кг"
+      },
+      "smKG": {
+        "val": 58.7,
+        "min": 62.4,
+        "max": 70.2,
+        "padding": 31.325480769231,
+        "name": "Сухая масса",
+        "unit": "кг"
+      },
+      "sjKG": {
+        "val": 19.3,
+        "min": 7.8,
+        "max": 15.6,
+        "padding": 74.498076923077,
+        "name": "Содержание жира",
+        "unit": "кг"
+      },
+      "smPe": {
+        "val": 75.3,
+        "min": 80,
+        "max": 90,
+        "padding": 31.343625,
+        "name": "Сухая масса",
+        "unit": "%"
+      },
+      "sjPe": {
+        "val": 24.7,
+        "min": 10,
+        "max": 20,
+        "padding": 74.4255,
+        "percjHeriBMI": 21.9,
+        "percjYMCA": 27.4,
+        "name": "Содержание жира",
+        "unit": "%"
+      },
+      "bmi": {
+        "val": 25.5,
+        "min": 18.5,
+        "max": 25,
+        "padding": 67.266,
+        "text": "Избыточная масса тела (предожирение)",
+        "name": "ИМТ",
+        "unit": ""
+      },
+      "weight": {
+        "curr": 78,
+        "opt": 77.2,
+        "dd": -0.8
+      },
+      "bju": {
+        "b": 85.8,
+        "j": 39,
+        "u": 390,
+        "k": 2254.2
+      },
+      "tkr": {
+        "val": 55.9,
+        "min": 43,
+        "max": 53,
+        "padding": 68.422075471698,
+        "name": "Соотношение талии к росту",
+        "unit": ""
+      },
+      "danger": {
+        "text1": "Риск есть!",
+        "text2": "большой обхват талии",
+        "img": 3
+      }
+    },
+    "mix": [
+      {
+        "0": {
+          "list": [
+            {
+              "name": "Рост",
+              "unit": "см",
+              "path": "height",
+              "value": "175"
+            },
+            {
+              "name": "Обхват шеи",
+              "unit": "см",
+              "path": "neck",
+              "value": "42.98"
+            }
+          ]
+        },
+        "1": {
+          "list": [
+            {
+              "name": "Объем плеч",
+              "unit": "см",
+              "path": "shoulder",
+              "value": "0"
+            }
+          ]
+        },
+        "2": {
+          "list": [
+            {
+              "name": "Обхват груди",
+              "unit": "см",
+              "path": "bust",
+              "value": "105.9"
+            },
+            {
+              "name": "Обхват под грудью",
+              "unit": "см",
+              "path": "breast",
+              "value": "0"
+            },
+            {
+              "name": "Обхват талии",
+              "unit": "см",
+              "path": "waist",
+              "value": "97.8"
+            },
+            {
+              "name": "Обхват живота",
+              "unit": "пупок, см",
+              "path": "stomach",
+              "value": "0"
+            },
+            {
+              "name": "Обхват под животом",
+              "unit": "ниже пупка, см",
+              "path": "substomach",
+              "value": "0"
+            }
+          ]
+        },
+        "4": {
+          "list": [
+            {
+              "name": "Обхват запястья",
+              "unit": "см",
+              "path": "wrist",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      [
+        {
+          "list": [
+            {
+              "name": "Плечо правое",
+              "unit": "середина, см",
+              "path": "rightshoulder",
+              "value": "35.4"
+            },
+            {
+              "name": "Предплечье правое",
+              "unit": "середина, см",
+              "path": "rightforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Плечо левое",
+              "unit": "середина, см",
+              "path": "leftshoulder",
+              "value": "34.7"
+            },
+            {
+              "name": "Предплечье левое",
+              "unit": "середина, см",
+              "path": "leftforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "По центру ягодиц",
+              "unit": "см",
+              "path": "hips",
+              "value": "101.9"
+            },
+            {
+              "name": "Правое бедро",
+              "unit": "под ягодицами",
+              "path": "righthip",
+              "value": "51.8"
+            },
+            {
+              "name": "Левое бедро",
+              "unit": "под ягодицами",
+              "path": "lefthip",
+              "value": "51.4"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Икра правая",
+              "unit": "середина, см",
+              "path": "rightcalf",
+              "value": "0"
+            },
+            {
+              "name": "Икра левая",
+              "unit": "середина, см",
+              "path": "leftcalf",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    ],
+    "usermessage": null,
+    "managermessage": null,
+    "models": [
+      {
+        "id": "570",
+        "iuser": "1",
+        "path": "http://app.dubllik.com/u/files/iusers/c4ca4238a0b923820dcc509a6f75849b/model_20170724_15-48-43",
+        "name": "model_20170724_15-48-43.ply",
+        "cdate": "24.07.2017 15:49:27",
+        "defmodel": "0",
+        "scanner": "000001",
+        "accuracy": "",
+        "weight": "79",
+        "height": "175",
+        "orderprint": ""
+      }
+    ]
+  },
+  {
+    "cdate": "11.08.2017 00:00:00",
+    "sizes": {
+      "height": "193",
+      "neck": "42.98",
+      "shoulder": "0",
+      "bust": "0",
+      "breast": "0",
+      "waist": "129.9",
+      "stomach": "0",
+      "substomach": "0",
+      "hips": "124.1",
+      "righthip": "63.2",
+      "lefthip": "67.9",
+      "wrist": "0",
+      "rightshoulder": "45.2",
+      "rightforearm": "0",
+      "leftshoulder": "45.3",
+      "leftforearm": "0",
+      "rightcalf": "0",
+      "leftcalf": "0"
+    },
+    "weight": "117",
+    "age": 36,
+    "gender": "male",
+    "summary": {
+      "weightKG": {
+        "val": 117,
+        "min": 79.1,
+        "max": 107,
+        "padding": 69.71214953271,
+        "name": "Вес",
+        "unit": "кг"
+      },
+      "smKG": {
+        "val": 78.4,
+        "min": 93.6,
+        "max": 105.3,
+        "padding": 27.892307692308,
+        "name": "Сухая масса",
+        "unit": "кг"
+      },
+      "sjKG": {
+        "val": 38.6,
+        "min": 11.7,
+        "max": 23.4,
+        "padding": 88.230769230769,
+        "name": "Содержание жира",
+        "unit": "кг"
+      },
+      "smPe": {
+        "val": 67,
+        "min": 80,
+        "max": 90,
+        "padding": 27.88875,
+        "name": "Сухая масса",
+        "unit": "%"
+      },
+      "sjPe": {
+        "val": 33,
+        "min": 10,
+        "max": 20,
+        "padding": 88.245,
+        "percjHeriBMI": 30.1,
+        "percjYMCA": 35.9,
+        "name": "Содержание жира",
+        "unit": "%"
+      },
+      "bmi": {
+        "val": 31.4,
+        "min": 18.5,
+        "max": 25,
+        "padding": 75.1248,
+        "text": "Ожирение 1 степени",
+        "name": "ИМТ",
+        "unit": ""
+      },
+      "weight": {
+        "curr": 117,
+        "opt": 0,
+        "dd": -117
+      },
+      "bju": {
+        "b": 128.7,
+        "j": 58.5,
+        "u": 585,
+        "k": 3381.3
+      },
+      "tkr": {
+        "val": 67.3,
+        "min": 43,
+        "max": 53,
+        "padding": 75.584716981132,
+        "name": "Соотношение талии к росту",
+        "unit": ""
+      },
+      "danger": {
+        "text1": "Риск есть!",
+        "text2": "большой обхват талии",
+        "img": 3
+      }
+    },
+    "mix": [
+      {
+        "0": {
+          "list": [
+            {
+              "name": "Рост",
+              "unit": "см",
+              "path": "height",
+              "value": "193"
+            },
+            {
+              "name": "Обхват шеи",
+              "unit": "см",
+              "path": "neck",
+              "value": "42.98"
+            }
+          ]
+        },
+        "1": {
+          "list": [
+            {
+              "name": "Объем плеч",
+              "unit": "см",
+              "path": "shoulder",
+              "value": "0"
+            }
+          ]
+        },
+        "2": {
+          "list": [
+            {
+              "name": "Обхват груди",
+              "unit": "см",
+              "path": "bust",
+              "value": "0"
+            },
+            {
+              "name": "Обхват под грудью",
+              "unit": "см",
+              "path": "breast",
+              "value": "0"
+            },
+            {
+              "name": "Обхват талии",
+              "unit": "см",
+              "path": "waist",
+              "value": "129.9"
+            },
+            {
+              "name": "Обхват живота",
+              "unit": "пупок, см",
+              "path": "stomach",
+              "value": "0"
+            },
+            {
+              "name": "Обхват под животом",
+              "unit": "ниже пупка, см",
+              "path": "substomach",
+              "value": "0"
+            }
+          ]
+        },
+        "4": {
+          "list": [
+            {
+              "name": "Обхват запястья",
+              "unit": "см",
+              "path": "wrist",
+              "value": "0"
+            }
+          ]
+        }
+      },
+      [
+        {
+          "list": [
+            {
+              "name": "Плечо правое",
+              "unit": "середина, см",
+              "path": "rightshoulder",
+              "value": "45.2"
+            },
+            {
+              "name": "Предплечье правое",
+              "unit": "середина, см",
+              "path": "rightforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Плечо левое",
+              "unit": "середина, см",
+              "path": "leftshoulder",
+              "value": "45.3"
+            },
+            {
+              "name": "Предплечье левое",
+              "unit": "середина, см",
+              "path": "leftforearm",
+              "value": "0"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "По центру ягодиц",
+              "unit": "см",
+              "path": "hips",
+              "value": "124.1"
+            },
+            {
+              "name": "Правое бедро",
+              "unit": "под ягодицами",
+              "path": "righthip",
+              "value": "63.2"
+            },
+            {
+              "name": "Левое бедро",
+              "unit": "под ягодицами",
+              "path": "lefthip",
+              "value": "67.9"
+            }
+          ]
+        },
+        {
+          "list": [
+            {
+              "name": "Икра правая",
+              "unit": "середина, см",
+              "path": "rightcalf",
+              "value": "0"
+            },
+            {
+              "name": "Икра левая",
+              "unit": "середина, см",
+              "path": "leftcalf",
+              "value": "0"
+            }
+          ]
+        }
+      ]
+    ],
+    "usermessage": null,
+    "managermessage": null,
+    "models": [
+      {
+        "id": "596",
+        "iuser": "1",
+        "path": "http://app.dubllik.com/u/files/iusers/c4ca4238a0b923820dcc509a6f75849b/model_20170811_10-35-09",
+        "name": "model_20170811_10-35-09.ply",
+        "cdate": "11.08.2017 10:36:02",
+        "defmodel": "0",
+        "scanner": "000006",
+        "accuracy": "",
+        "weight": "117",
+        "height": "193",
+        "orderprint": ""
+      }
+    ]
+  }
+]

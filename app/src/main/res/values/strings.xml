@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">AndroidChart2</string>
+
+
+    <string name="graph_legend_bust">Грудь</string>
+    <string name="graph_legend_waist">Талия</string>
+    <string name="graph_legend_hips">Бедра</string>
+    <string name="graph_legend_right_bitseps">Правый бицепс</string>
+    <string name="graph_legend_left_bitseps">Левый бицепс</string>
+    <string name="graph_legend_right_hip">Правое бедро</string>
+    <string name="graph_legend_left_hip">Левое бедро</string>
+    <string name="graph_legend_weight">Вес</string>
+    <string name="graph_legend_sm">Сухая масса</string>
+    <string name="graph_legend_sj">Содержание жира</string>
+    <string name="graph_legend_imt">ИМТ</string>
+    <string name="graph_legend_tkr">Соотношение талии к росту</string>
+
+    <string name="graph_header1">Динамика изменения размеров тела в см</string>
+    <string name="graph_header2">Динамика изменения состава тела в кг</string>
+    <string name="graph_header3">Динамика изменения состава тела в %</string>
+    <string name="graph_header4">Динамика изменения ИМТ</string>
+    <string name="graph_header5">Динамика изменения соотношения талии к росту</string>
+
+</resources>

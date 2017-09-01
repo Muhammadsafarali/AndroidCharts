@@ -15,6 +15,9 @@ import android.widget.TextView;
 import com.nex3z.flowlayout.FlowLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeSet;
 
 import im.dacer.androidcharts.LineView;
 
@@ -25,7 +28,10 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private String[] items;
     private ArrayList<int[]> colorList = new ArrayList<>();
+    private ArrayList<TreeSet<Integer>> unmarkedLegendList;
 //    private ArrayList<Integer>
+    private int grayColor;
+    private int whiteColor;
 
 //    private static int[] colors;
     ArrayList<ArrayList<String>> listNames;
@@ -33,7 +39,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static ArrayList<String> strList = new ArrayList<>();
     ArrayList<ArrayList<ArrayList<Float>>> dataLists = new ArrayList<>();
 
-    ArrayList<ArrayList<Float>> storeList = new ArrayList();
+    ArrayList<Map<Integer, ArrayList<Float>>> storyList;
 
     public MyAdapter(Context context, ArrayList<String> strList, ArrayList<ArrayList<ArrayList<Float>>> items) {
         this.context = context;
@@ -54,6 +60,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     private void initColors(Context context) {
+        grayColor = context.getResources().getColor(android.R.color.darker_gray);
+        whiteColor = context.getResources().getColor(android.R.color.white);
+
         int[] colors1 = new int[7];
         colors1[0] = context.getResources().getColor(R.color.myred);
         colors1[1] = context.getResources().getColor(R.color.myblue);
@@ -124,6 +133,18 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         listNames.add(third);
     }
 
+    private void initUnmarkedLegendList() {
+        unmarkedLegendList = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
+            unmarkedLegendList.add(new TreeSet<Integer>());
+    }
+
+    private void initStoryList() {
+        storyList = new ArrayList<>();
+        for (int i = 0; i < 3; i++)
+            storyList.add(new HashMap<Integer, ArrayList<Float>>());
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, null, true);
@@ -141,30 +162,23 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.lineView.setTag(position);
         holder.lineView.setColorArray(colorList.get(position));
 
-        holder.btnRemove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                Log.e("MyAdapter", "btnClick " + view.hashCode());
-//                holder.lineView = new LineView(context);
-                storeList.add(dataLists.get(position).get(0));
-                dataLists.get(position).remove(0);
-                holder.lineView.setFloatDataList(dataLists.get(position), false);
-
-//                strList.remove(0);
-//                holder.lineView.setBottomTextList(strList);
-//                holder.lineView.setFloatDataList(dataLists.get(position));
-
-            }
-        });
-
-        holder.btnAdd.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dataLists.get(position).add(0, storeList.get(storeList.size()-1));
-                holder.lineView.setFloatDataList(dataLists.get(position), false);
-                storeList.remove(storeList.size()-1);
-            }
-        });
+//        holder.btnRemove.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                storeList.add(dataLists.get(position).get(0));
+//                dataLists.get(position).remove(0);
+//                holder.lineView.setFloatDataList(dataLists.get(position), false);
+//            }
+//        });
+//
+//        holder.btnAdd.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                dataLists.get(position).add(0, storeList.get(storeList.size()-1));
+//                holder.lineView.setFloatDataList(dataLists.get(position), false);
+//                storeList.remove(storeList.size()-1);
+//            }
+//        });
 
         // Нарисовать легенду для графика в position
         if (dataLists != null && dataLists.size() > 1) {
@@ -173,12 +187,58 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     for (int j = 0; j < dataLists.get(position).size(); j++) {
                         final RelativeLayout layout = (RelativeLayout) mInflater.inflate(R.layout.item_legend_view, null, true);
                         layout.setTag(j);
+
                         layout.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-                                Log.e("MyAdapter", "Legend on Click: " + layout.getTag());
+//                                Log.e("MyAdapter", "Legend on Click: " + layout.getTag());
+                                if (unmarkedLegendList == null) {
+                                    initUnmarkedLegendList();
+                                    initStoryList();
+                                }
+
+                                if (!unmarkedLegendList.get(position).contains(layout.getTag())) {
+                                    unmarkedLegendList.get(position).add((Integer) layout.getTag());
+                                    (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(grayColor);
+
+                                    for (Integer dd : unmarkedLegendList.get(position)) {
+                                        Log.e("MyAdapter", "add: " + dd);
+                                    }
+
+                                    int ind = (Integer)layout.getTag();
+
+                                    // Сохранить
+                                    storyList.get(position).put(ind, dataLists.get(position).get(ind));
+
+                                    // Удалить график
+                                    dataLists.get(position).remove(ind);
+                                    holder.lineView.setFloatDataList(dataLists.get(position), false);
+
+                                    // Цвет
+                                    if (unmarkedLegendList.get(position).size() > 0) {
+                                        int[] colors = new int[dataLists.get(position).size()];
+                                        for (int i = 0; i < colors.length; i++) {
+
+                                        }
+                                    }
+                                }
+                                else {
+                                    unmarkedLegendList.get(position).remove(layout.getTag());
+                                    (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(whiteColor);
+
+                                    for (Integer dd : unmarkedLegendList.get(position)) {
+                                        Log.e("MyAdapter", "remove: " + dd);
+                                    }
+
+                                    // Добавить график
+                                    int ind = (Integer)layout.getTag();
+                                    dataLists.get(position).add(ind, storyList.get(position).get(ind));
+                                    holder.lineView.setFloatDataList(dataLists.get(position), false);
+                                    storyList.get(position).remove(ind);
+                                }
                             }
                         });
+
                         ImageView imageView = layout.findViewById(R.id.legend_img);
                         imageView.setBackgroundColor(colorList.get(position)[j]);
 
@@ -200,8 +260,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static class CellStatisticViewHolder extends RecyclerView.ViewHolder {
         TextView tvHeader;
         MyLineView lineView;
-        Button btnRemove;
-        Button btnAdd;
+//        Button btnRemove;
+//        Button btnAdd;
         FlowLayout flowLayout;
 
         CellStatisticViewHolder(View view) {
@@ -215,8 +275,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             lineView.setDrawDotLine(false);
 
 
-            btnRemove = view.findViewById(R.id.btnRemove);
-            btnAdd = view.findViewById(R.id.btnAdd);
+//            btnRemove = view.findViewById(R.id.btnRemove);
+//            btnAdd = view.findViewById(R.id.btnAdd);
 
             flowLayout = view.findViewById(R.id.flow_layout);
         }

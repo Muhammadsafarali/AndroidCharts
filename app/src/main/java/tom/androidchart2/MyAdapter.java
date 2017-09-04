@@ -23,13 +23,10 @@ import im.dacer.androidcharts.LineView;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-    private static Context context;
     private LayoutInflater mInflater;
 
     private String[] items;
     private ArrayList<int[]> colorList = new ArrayList<>();
-    private ArrayList<TreeSet<Integer>> unmarkedLegendList;
-    private ArrayList<ArrayList<GraphItem>> arrayList;
     private ArrayList<GraphList> graphItemArrayList;
 
     private int grayColor;
@@ -40,9 +37,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static ArrayList<String> strList = new ArrayList<>();
     ArrayList<ArrayList<ArrayList<Float>>> dataLists = new ArrayList<>();
 
-    ArrayList<Map<Integer, ArrayList<Float>>> storyList;
     ArrayList<ArrayList<Float>> filteredList;
-    private static int count;
 
     class GraphList {
         ArrayList<GraphItem> graphItems;
@@ -53,41 +48,15 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         ArrayList<Float> chart;
         boolean checked;
         int color;
-
-//        public ArrayList<Float> getChart() {
-//            return chart;
-//        }
-//
-//        public void setChart(ArrayList<Float> chart) {
-//            this.chart = chart;
-//        }
-//
-//        public int getColor() {
-//            return color;
-//        }
-//
-//        public void setColor(int color) {
-//            this.color = color;
-//        }
-//
-//        public boolean isChecked() {
-//            return checked;
-//        }
-//
-//        public void setChecked(boolean checked) {
-//            this.checked = checked;
-//        }
     }
 
     public MyAdapter(Context context, ArrayList<String> strList, ArrayList<ArrayList<ArrayList<Float>>> items) {
-        this.context = context;
         this.mInflater = LayoutInflater.from(context);
         initHeaders(context);
         initColors(context);
         initLegendNames(context);
 
-        initArrayList(items);
-//        initGraphItemArrayList(items);
+        initGraphItemArrayList(items);
 
         this.strList = strList;
         if (this.strList.size() < 8) {
@@ -106,6 +75,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         for (int i = 0; i < 3; i++) {
             GraphList list = new GraphList();
+            list.graphItems = new ArrayList<>();
             for (int j = 0; j < items.get(i).size(); j++) {
                 GraphItem item = new GraphItem();
                 item.chart = items.get(i).get(j);
@@ -113,23 +83,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 list.graphItems.add(item);
             }
             graphItemArrayList.add(list);
-        }
-    }
-
-    private void initArrayList(ArrayList<ArrayList<ArrayList<Float>>> items) {
-        if (arrayList == null)
-            arrayList = new ArrayList<>();
-
-        for (int i = 0; i < 3; i++) {
-            ArrayList<GraphItem> a = new ArrayList<>();
-            for (int j = 0; j < items.get(i).size(); j++) {
-                GraphItem itm = new GraphItem();
-                itm.chart = items.get(i).get(j);
-                itm.color = colorList.get(i)[j];
-
-                a.add(itm);
-            }
-            arrayList.add(a);
         }
     }
 
@@ -207,18 +160,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         listNames.add(third);
     }
 
-    private void initUnmarkedLegendList() {
-        unmarkedLegendList = new ArrayList<>();
-        for (int i = 0; i < 3; i++)
-            unmarkedLegendList.add(new TreeSet<Integer>());
-    }
-
-    private void initStoryList() {
-        storyList = new ArrayList<>();
-        for (int i = 0; i < 3; i++)
-            storyList.add(new HashMap<Integer, ArrayList<Float>>());
-    }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         final View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item, null, true);
@@ -252,38 +193,34 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
                                 int ind = (int)layout.getTag();
 
-                                if (!arrayList.get(position).get(ind).checked) {
-                                    // добавить
-                                    arrayList.get(position).get(ind).checked = true;
-                                    int count = ++MyAdapter.count;
-//                                    filteredList.add(arrayList.get(position).get(ind).chart);
+                                if (!graphItemArrayList.get(position).graphItems.get(ind).checked) {
+                                    graphItemArrayList.get(position).graphItems.get(ind).checked = true;
+                                    int count = ++graphItemArrayList.get(position).count;
                                     filteredList.removeAll(filteredList);
                                     int[] c = new int[count];
                                     int index = 0;
-                                    int size = arrayList.get(position).size();
+                                    int size = graphItemArrayList.get(position).graphItems.size();
                                     for (int i = 0; i < size; i++) {
-                                        if (arrayList.get(position).get(i).checked) {
-                                            filteredList.add(arrayList.get(position).get(i).chart);
-                                            c[index++] = arrayList.get(position).get(i).color;
+                                        if (graphItemArrayList.get(position).graphItems.get(i).checked) {
+                                            filteredList.add(graphItemArrayList.get(position).graphItems.get(i).chart);
+                                            c[index++] = graphItemArrayList.get(position).graphItems.get(i).color;
                                         }
                                     }
-
                                     holder.lineView.setFloatDataList(filteredList, false);
                                     holder.lineView.setColorArray(c);
                                     (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(grayColor);
                                 } else {
-                                    // удалить
-                                    arrayList.get(position).get(ind).checked = false;
-                                    int count = --MyAdapter.count;  // Ошибка здесь
+                                    graphItemArrayList.get(position).graphItems.get(ind).checked = false;
+                                    int count = --graphItemArrayList.get(position).count;
                                     if (count > 0) {
                                         int[] c = new int[count];
                                         filteredList.removeAll(filteredList);
                                         int index = 0;
-                                        int size = arrayList.get(position).size();
+                                        int size = graphItemArrayList.get(position).graphItems.size();
                                         for (int i = 0; i < size; i++) {
-                                            if (arrayList.get(position).get(i).checked) {
-                                                filteredList.add(arrayList.get(position).get(i).chart);
-                                                c[index++] = arrayList.get(position).get(i).color;
+                                            if (graphItemArrayList.get(position).graphItems.get(i).checked) {
+                                                filteredList.add(graphItemArrayList.get(position).graphItems.get(i).chart);
+                                                c[index++] = graphItemArrayList.get(position).graphItems.get(i).color;
                                             }
                                         }
 
@@ -292,13 +229,11 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                         (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(whiteColor);
                                     } else {
                                         filteredList.removeAll(filteredList);
-                                        MyAdapter.count = 0;
                                         holder.lineView.setFloatDataList(dataLists.get(position), false);
                                         holder.lineView.setColorArray(colorList.get(position));
                                         (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(whiteColor);
                                     }
                                 }
-
                             }
                         });
 
@@ -324,8 +259,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private static class CellStatisticViewHolder extends RecyclerView.ViewHolder {
         TextView tvHeader;
         MyLineView lineView;
-//        Button btnRemove;
-//        Button btnAdd;
         FlowLayout flowLayout;
 
         CellStatisticViewHolder(View view) {
@@ -335,12 +268,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
             lineView = view.findViewById(R.id.line_view);
             lineView.setShowPopup(LineView.SHOW_POPUPS_NONE);
-//            lineView.setColorArray(colors);
             lineView.setDrawDotLine(false);
-
-
-//            btnRemove = view.findViewById(R.id.btnRemove);
-//            btnAdd = view.findViewById(R.id.btnAdd);
 
             flowLayout = view.findViewById(R.id.flow_layout);
         }

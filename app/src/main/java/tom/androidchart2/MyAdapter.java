@@ -29,17 +29,55 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     private String[] items;
     private ArrayList<int[]> colorList = new ArrayList<>();
     private ArrayList<TreeSet<Integer>> unmarkedLegendList;
-//    private ArrayList<Integer>
+    private ArrayList<ArrayList<GraphItem>> arrayList;
+    private ArrayList<GraphList> graphItemArrayList;
+
     private int grayColor;
     private int whiteColor;
 
-//    private static int[] colors;
     ArrayList<ArrayList<String>> listNames;
 
     private static ArrayList<String> strList = new ArrayList<>();
     ArrayList<ArrayList<ArrayList<Float>>> dataLists = new ArrayList<>();
 
     ArrayList<Map<Integer, ArrayList<Float>>> storyList;
+    ArrayList<ArrayList<Float>> filteredList;
+    private static int count;
+
+    class GraphList {
+        ArrayList<GraphItem> graphItems;
+        int count;
+    }
+
+    class GraphItem {
+        ArrayList<Float> chart;
+        boolean checked;
+        int color;
+
+//        public ArrayList<Float> getChart() {
+//            return chart;
+//        }
+//
+//        public void setChart(ArrayList<Float> chart) {
+//            this.chart = chart;
+//        }
+//
+//        public int getColor() {
+//            return color;
+//        }
+//
+//        public void setColor(int color) {
+//            this.color = color;
+//        }
+//
+//        public boolean isChecked() {
+//            return checked;
+//        }
+//
+//        public void setChecked(boolean checked) {
+//            this.checked = checked;
+//        }
+    }
 
     public MyAdapter(Context context, ArrayList<String> strList, ArrayList<ArrayList<ArrayList<Float>>> items) {
         this.context = context;
@@ -47,6 +85,9 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         initHeaders(context);
         initColors(context);
         initLegendNames(context);
+
+        initArrayList(items);
+//        initGraphItemArrayList(items);
 
         this.strList = strList;
         if (this.strList.size() < 8) {
@@ -57,6 +98,39 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         }
 
         dataLists = items;
+    }
+
+    private void initGraphItemArrayList(ArrayList<ArrayList<ArrayList<Float>>> items) {
+        if (graphItemArrayList == null)
+            graphItemArrayList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            GraphList list = new GraphList();
+            for (int j = 0; j < items.get(i).size(); j++) {
+                GraphItem item = new GraphItem();
+                item.chart = items.get(i).get(j);
+                item.color = colorList.get(i)[j];
+                list.graphItems.add(item);
+            }
+            graphItemArrayList.add(list);
+        }
+    }
+
+    private void initArrayList(ArrayList<ArrayList<ArrayList<Float>>> items) {
+        if (arrayList == null)
+            arrayList = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            ArrayList<GraphItem> a = new ArrayList<>();
+            for (int j = 0; j < items.get(i).size(); j++) {
+                GraphItem itm = new GraphItem();
+                itm.chart = items.get(i).get(j);
+                itm.color = colorList.get(i)[j];
+
+                a.add(itm);
+            }
+            arrayList.add(a);
+        }
     }
 
     private void initColors(Context context) {
@@ -162,24 +236,6 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.lineView.setTag(position);
         holder.lineView.setColorArray(colorList.get(position));
 
-//        holder.btnRemove.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                storeList.add(dataLists.get(position).get(0));
-//                dataLists.get(position).remove(0);
-//                holder.lineView.setFloatDataList(dataLists.get(position), false);
-//            }
-//        });
-//
-//        holder.btnAdd.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                dataLists.get(position).add(0, storeList.get(storeList.size()-1));
-//                holder.lineView.setFloatDataList(dataLists.get(position), false);
-//                storeList.remove(storeList.size()-1);
-//            }
-//        });
-
         // Нарисовать легенду для графика в position
         if (dataLists != null && dataLists.size() > 1) {
             if (dataLists.get(position).size() > 1) {
@@ -191,51 +247,58 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         layout.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
-//                                Log.e("MyAdapter", "Legend on Click: " + layout.getTag());
-                                if (unmarkedLegendList == null) {
-                                    initUnmarkedLegendList();
-                                    initStoryList();
-                                }
+                                if (filteredList == null)
+                                    filteredList = new ArrayList<>();
 
-                                if (!unmarkedLegendList.get(position).contains(layout.getTag())) {
-                                    unmarkedLegendList.get(position).add((Integer) layout.getTag());
-                                    (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(grayColor);
+                                int ind = (int)layout.getTag();
 
-                                    for (Integer dd : unmarkedLegendList.get(position)) {
-                                        Log.e("MyAdapter", "add: " + dd);
-                                    }
-
-                                    int ind = (Integer)layout.getTag();
-
-                                    // Сохранить
-                                    storyList.get(position).put(ind, dataLists.get(position).get(ind));
-
-                                    // Удалить график
-                                    dataLists.get(position).remove(ind);
-                                    holder.lineView.setFloatDataList(dataLists.get(position), false);
-
-                                    // Цвет
-                                    if (unmarkedLegendList.get(position).size() > 0) {
-                                        int[] colors = new int[dataLists.get(position).size()];
-                                        for (int i = 0; i < colors.length; i++) {
-
+                                if (!arrayList.get(position).get(ind).checked) {
+                                    // добавить
+                                    arrayList.get(position).get(ind).checked = true;
+                                    int count = ++MyAdapter.count;
+//                                    filteredList.add(arrayList.get(position).get(ind).chart);
+                                    filteredList.removeAll(filteredList);
+                                    int[] c = new int[count];
+                                    int index = 0;
+                                    int size = arrayList.get(position).size();
+                                    for (int i = 0; i < size; i++) {
+                                        if (arrayList.get(position).get(i).checked) {
+                                            filteredList.add(arrayList.get(position).get(i).chart);
+                                            c[index++] = arrayList.get(position).get(i).color;
                                         }
                                     }
-                                }
-                                else {
-                                    unmarkedLegendList.get(position).remove(layout.getTag());
-                                    (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(whiteColor);
 
-                                    for (Integer dd : unmarkedLegendList.get(position)) {
-                                        Log.e("MyAdapter", "remove: " + dd);
+                                    holder.lineView.setFloatDataList(filteredList, false);
+                                    holder.lineView.setColorArray(c);
+                                    (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(grayColor);
+                                } else {
+                                    // удалить
+                                    arrayList.get(position).get(ind).checked = false;
+                                    int count = --MyAdapter.count;  // Ошибка здесь
+                                    if (count > 0) {
+                                        int[] c = new int[count];
+                                        filteredList.removeAll(filteredList);
+                                        int index = 0;
+                                        int size = arrayList.get(position).size();
+                                        for (int i = 0; i < size; i++) {
+                                            if (arrayList.get(position).get(i).checked) {
+                                                filteredList.add(arrayList.get(position).get(i).chart);
+                                                c[index++] = arrayList.get(position).get(i).color;
+                                            }
+                                        }
+
+                                        holder.lineView.setFloatDataList(filteredList, false);
+                                        holder.lineView.setColorArray(c);
+                                        (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(whiteColor);
+                                    } else {
+                                        filteredList.removeAll(filteredList);
+                                        MyAdapter.count = 0;
+                                        holder.lineView.setFloatDataList(dataLists.get(position), false);
+                                        holder.lineView.setColorArray(colorList.get(position));
+                                        (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(whiteColor);
                                     }
-
-                                    // Добавить график
-                                    int ind = (Integer)layout.getTag();
-                                    dataLists.get(position).add(ind, storyList.get(position).get(ind));
-                                    holder.lineView.setFloatDataList(dataLists.get(position), false);
-                                    storyList.get(position).remove(ind);
                                 }
+
                             }
                         });
 
@@ -251,6 +314,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             }
         }
     }
+
 
     @Override
     public int getItemCount() {

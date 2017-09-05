@@ -323,21 +323,23 @@ public class MyLineView extends View {
         drawLines(canvas);
         drawDots(canvas);
 
-        for (int k = 0; k < drawDotLists.size(); k++) {
-            float maxValue = Collections.max(dataLists.get(k));
-            float minValue = Collections.min(dataLists.get(k));
-            for (Dot d : drawDotLists.get(k)) {
-                if (showPopupType == SHOW_POPUPS_All) {
-                    drawPopup(canvas, d.data, d.setupPoint(tmpPoint),
-                            colorArray[k % colorArray.length]);
-                } else if (showPopupType == SHOW_POPUPS_MAXMIN_ONLY) {
-                    if (d.data == maxValue) {
+        if (drawDotLists.size() == dataLists.size()) {
+            for (int k = 0; k < drawDotLists.size(); k++) {
+                float maxValue = Collections.max(dataLists.get(k));
+                float minValue = Collections.min(dataLists.get(k));
+                for (Dot d : drawDotLists.get(k)) {
+                    if (showPopupType == SHOW_POPUPS_All) {
                         drawPopup(canvas, d.data, d.setupPoint(tmpPoint),
                                 colorArray[k % colorArray.length]);
-                    }
-                    if (d.data == minValue) {
-                        drawPopup(canvas, d.data, d.setupPoint(tmpPoint),
-                                colorArray[k % colorArray.length]);
+                    } else if (showPopupType == SHOW_POPUPS_MAXMIN_ONLY) {
+                        if (d.data == maxValue) {
+                            drawPopup(canvas, d.data, d.setupPoint(tmpPoint),
+                                    colorArray[k % colorArray.length]);
+                        }
+                        if (d.data == minValue) {
+                            drawPopup(canvas, d.data, d.setupPoint(tmpPoint),
+                                    colorArray[k % colorArray.length]);
+                        }
                     }
                 }
             }

@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private LayoutInflater mInflater;
+    private Context context;
 
     private String[] items;
     private ArrayList<int[]> colorList = new ArrayList<>();
@@ -44,6 +46,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     }
 
     public MyAdapter(Context context, ArrayList<String> strList, ArrayList<ArrayList<ArrayList<Float>>> items) {
+        this.context = context;
         this.mInflater = LayoutInflater.from(context);
         initHeaders(context);
         initColors(context);
@@ -169,6 +172,16 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         holder.lineView.setFloatDataList(dataLists.get(position), false);
         holder.lineView.setTag(position);
         holder.lineView.setColorArray(colorList.get(position));
+        holder.checkBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (holder.checkBox.isChecked())
+                    holder.lineView.setShowPopup(MyLineView.SHOW_POPUPS_All);
+                else
+                    holder.lineView.setShowPopup(MyLineView.SHOW_POPUPS_NONE);
+                holder.lineView.refreshAfterDataChanged();
+            }
+        });
 
         // Нарисовать легенду для графика в position
         if (dataLists != null && dataLists.size() > 1) {
@@ -201,7 +214,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                                     }
                                     holder.lineView.setFloatDataList(filteredList, false);
                                     holder.lineView.setColorArray(c);
-                                    (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundColor(grayColor);
+                                    (holder.flowLayout.getChildAt((Integer)layout.getTag())).setBackgroundDrawable(context.getResources().getDrawable(R.drawable.btn_select));
                                 } else {
                                     graphItemArrayList.get(position).graphItems.get(ind).checked = false;
                                     int count = --graphItemArrayList.get(position).count;
@@ -253,6 +266,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         TextView tvHeader;
         MyLineView lineView;
         FlowLayout flowLayout;
+        CheckBox checkBox;
 
         CellStatisticViewHolder(View view) {
             super(view);
@@ -264,6 +278,8 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             lineView.setDrawDotLine(false);
 
             flowLayout = view.findViewById(R.id.flow_layout);
+
+            checkBox = (CheckBox) view.findViewById(R.id.checkbox);
         }
     }
 

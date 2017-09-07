@@ -27,20 +27,35 @@
             app:childSpacing="8dp"
             app:flow="true"
             app:rtl="true"
+            app:rowSpacing="2dp"
             app:childSpacingForLastRow="align">
 
         </com.nex3z.flowlayout.FlowLayout>
 
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="200dp">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
-            <view
+            <HorizontalScrollView
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
-                class="tom.androidchart2.MyLineView"
-                android:id="@+id/line_view"/>
-        </HorizontalScrollView>
+                android:layout_height="200dp">
+
+                <view
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    class="tom.androidchart2.MyLineView"
+                    android:id="@+id/line_view"/>
+            </HorizontalScrollView>
+
+            <CheckBox
+                android:id="@+id/checkbox"
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="16dp"
+                android:button="@drawable/selector"
+                android:layout_alignParentRight="true"
+                android:layout_width="32dp"
+                android:layout_height="24dp" />
+        </RelativeLayout>
         <!--<include android:id="@+id/chartView" layout="@layout/chart"/>-->
 
     </LinearLayout>

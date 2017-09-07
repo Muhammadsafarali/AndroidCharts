@@ -11,4 +11,7 @@
     <color name="mygreen">#4CAF50</color>
     <color name="myteal">#009688</color>
     <color name="mycyan">#00BCD4</color>
+
+    <color name="mygray">#44000000</color>
+    <color name="mygray_light">#cad4d8</color>
 </resources>

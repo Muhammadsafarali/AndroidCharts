@@ -218,7 +218,7 @@ public class MyLineView extends View {
         postInvalidate();
     }
 
-    private void refreshAfterDataChanged() {
+    public void refreshAfterDataChanged() {
         int verticalGridNum = getVerticalGridlNum();
         refreshYCoordinateList(verticalGridNum);
         refreshDrawDotList(verticalGridNum);

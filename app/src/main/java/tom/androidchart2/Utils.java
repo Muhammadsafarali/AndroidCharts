@@ -12,9 +12,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-/**
- * Created by 3dium on 31.08.2017.
- */
 
 public class Utils {
 

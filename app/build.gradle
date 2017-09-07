@@ -33,7 +33,6 @@ dependencies {
 
     compile 'com.android.support:design:26+'
 
-    compile 'im.dacer:AndroidCharts:1.0.4'
     compile 'com.nex3z:flow-layout:0.1.4'
 
     compile 'com.google.code.gson:gson:2.2.4'

@@ -1,8 +1,8 @@
 package tom.androidchart2;
 
 import android.graphics.Color;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -13,12 +13,9 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
-
 import java.util.ArrayList;
-
-import im.dacer.androidcharts.LineView;
 import tom.androidchart2.Measurements.Measurement;
-import tom.androidchart2.Measurements.Model;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -193,9 +190,9 @@ public class MainActivity extends AppCompatActivity {
         datalists.add(first);
         datalists.add(second);
 
-        LineView lineView = (LineView) findViewById(R.id.line_view);
+        MyLineView lineView = (MyLineView) findViewById(R.id.line_view);
         lineView.setDrawDotLine(false);
-        lineView.setShowPopup(LineView.SHOW_POPUPS_NONE);
+        lineView.setShowPopup(MyLineView.SHOW_POPUPS_NONE);
         lineView.setBottomTextList(strList);
         lineView.setColorArray(new int[]{getResources().getColor(R.color.myred), getResources().getColor(R.color.myblue), Color.CYAN});
         lineView.setDataList(datalists);

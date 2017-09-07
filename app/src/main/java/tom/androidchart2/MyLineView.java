@@ -20,11 +20,6 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import im.dacer.androidcharts.MyUtils;
-
-/**
- * Created by 3dium on 31.08.2017.
- */
 
 public class MyLineView extends View {
     public static final int SHOW_POPUPS_All = 1;

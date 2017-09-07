@@ -13,7 +13,6 @@ import com.nex3z.flowlayout.FlowLayout;
 
 import java.util.ArrayList;
 
-import im.dacer.androidcharts.LineView;
 
 public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
@@ -261,7 +260,7 @@ public class MyAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             tvHeader = view.findViewById(R.id.tvHeader);
 
             lineView = view.findViewById(R.id.line_view);
-            lineView.setShowPopup(LineView.SHOW_POPUPS_NONE);
+            lineView.setShowPopup(MyLineView.SHOW_POPUPS_NONE);
             lineView.setDrawDotLine(false);
 
             flowLayout = view.findViewById(R.id.flow_layout);
